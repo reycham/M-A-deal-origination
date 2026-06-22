@@ -1,0 +1,54 @@
+industry: UK Managed Service Provider
+description: >
+  Targeting founder-owned UK IT MSPs in the lower-middle-market for a roll-up
+  acquisition. Classic recurring-revenue model with SLA contracts, monitoring,
+  and outsourced IT support. Focus on succession situations outside London.
+
+sic_codes:
+  - "62020"   # IT consultancy
+  - "62030"   # Computer facilities management
+  - "62090"   # Other IT services
+  - "62012"   # Business software development
+  - "95110"   # Computer repair
+
+regions:
+  - West Midlands
+  - East Midlands
+  - North West
+  - Yorkshire
+  - North East
+  - South West
+
+employee_band:
+  min: 10
+  max: 50
+
+min_years_in_business: 10
+
+incorporated_before_years: 10    # only companies incorporated 10+ years ago
+
+ownership: founder_owned          # PSC must be an individual (not a company)
+
+max_funding_rounds: 0             # no VC/PE backing
+
+succession:
+  min_owner_age: 55               # succession signal threshold
+
+weights:
+  industry_match: 20              # LLM confirms genuine MSP
+  size_band: 20                   # headcount 10–50
+  founder_owned: 20               # PSC individual + no funding
+  succession: 20                  # owner 55+ AND 10+ yrs in business
+  standalone: 10                  # not part of a corporate group
+  recurring_rev: 10               # LLM recurring-revenue confidence (0–10 scaled)
+
+disqualifiers:
+  - psc_is_company                # top PSC is a corporate entity
+  - has_funding                   # Crunchbase funding rounds present
+  - under_5_employees             # lifestyle / break-fix shop
+  - not_active                    # dissolved, dormant, in liquidation
+
+tiers:
+  A: 80
+  B: 60
+  # below 60 = C (monitor / drop)
